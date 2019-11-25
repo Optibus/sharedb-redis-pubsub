@@ -20,6 +20,7 @@ function RedisPubSub(options) {
 
   var pubsub = this;
   this.observer.on('message', function(channel, message) {
+    console.log("RedisPubSub channel "+channel+ "message: "+ message.length + " : " message.substr(0,50))
     var data = JSON.parse(message);
     pubsub._emit(channel, data);
   });
